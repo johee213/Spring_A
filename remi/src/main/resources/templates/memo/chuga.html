@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1> 메모 등록 </h1>
+
+<form name = "Form" method="post" action="/memo/chugaProc">
+<table border = "1" align="center" style = "width: 80%;">
+    <tr>
+        <td> 작성자 :</td>
+        <td><input type="text" name="writer" placeholder="작성자"></td>
+    </tr>
+    <tr>
+    <td> 내용 : </td>
+    <td><textarea name ="content" style="width: 200px; height: 80px;"></textarea></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button type="submit">저장하기</button>
+        </td>
+
+    </tr>
+</table>
+</form>
+<!--<script>-->
+<!--    function save(){-->
+<!--&lt;!&ndash; documnet 문서안에있는 form안에있는 writer 값이 공백이면  작성자를 입력하세요 멘트뛰우고 멈춰라 &ndash;&gt;-->
+<!--        if (documnet.chugaForm.writer.value == '') {-->
+<!--            alert ('작성자를 입력하세요.');-->
+<!--            document.chugaForm.writer.focus();-->
+<!--            return;-->
+<!--            }-->
+<!--&lt;!&ndash;    if (confirm('등록할까요')) {&ndash;&gt;-->
+<!--&lt;!&ndash;        document.chugaForm.submit();&ndash;&gt;-->
+<!--&lt;!&ndash;      }&ndash;&gt;-->
+<!--        }-->
+<!--</script>-->
+
+</body>
+</html>
