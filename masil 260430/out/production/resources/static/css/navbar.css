@@ -1,0 +1,74 @@
+
+        /* 1. 기본 설정 및 색상 변수 */
+
+            :root {
+                --point-orange: #F39C12;     /* 메인 오렌지 */
+                --dark-orange: #E67E22;      /* 호버용 진한 오렌지 */
+                --light-orange: #FFF5EB;     /* 배경용 연한 오렌지 */
+                --deep-space: #101820;       /* 강조 텍스트용 남색 */
+                --bg-gray: #f8f9fa;          /* 전체 바탕 회색 */
+            }
+
+            body {
+                margin: 0;
+                font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+                background-color: var(--bg-gray);
+                color: #333;
+            }
+
+            /* 2. 상단 네비게이션 영역 */
+            .top-nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 10%;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                background-color: var(--bg-gray);
+            }
+
+            .logo-area a {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: var(--point-orange) !important;
+                font-weight: 900;
+                font-size: 26px;
+                letter-spacing: -1px;
+            }
+
+            .logo-area img {
+                height: 45px;
+                margin-right: 12px;
+            }
+
+            .pill-nav {
+                display: flex;
+                align-items: center;
+                background-color: #ffffff;
+                padding: 6px 10px;
+                border-radius: 50px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+                border: 1px solid rgba(243, 156, 18, 0.1);
+                gap: 5px;
+            }
+
+            .nav-item {
+                text-decoration: none;
+                color: #555;
+                padding: 12px 25px;
+                border-radius: 40px;
+                font-size: 16px;
+                font-weight: 700;
+                transition: all 0.25s ease;
+            }
+
+            .nav-item:hover,
+            .nav-item.active {
+                background-color: var(--point-orange) !important;
+                color: #ffffff !important;
+                box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+            }
+
+

@@ -1,0 +1,258 @@
+
+    /* 1. 기본 설정 및 색상 변수 */
+    :root {
+        --point-orange: #F39C12;     /* 메인 오렌지 */
+        --dark-orange: #E67E22;      /* 호버용 진한 오렌지 */
+        --light-orange: #FFF5EB;     /* 배경용 연한 오렌지 */
+        --deep-space: #101820;       /* 강조 텍스트용 남색 */
+        --bg-gray: #f8f9fa;          /* 전체 바탕 회색 */
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+        background-color: var(--bg-gray);
+        color: #333;
+    }
+
+
+
+    /* 3. 중앙 컨테이너 */
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    /* 4. 상단 영역 (영상 & 환영박스) */
+    .content-top {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 40px;
+        align-items: stretch;
+    }
+
+    .video-box {
+        flex: 1.6;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .video-title {
+        font-weight: bold;
+        font-size: 19px;
+        margin-bottom: 12px;
+        color: var(--deep-space);
+    }
+
+    .video-placeholder {
+        flex-grow: 1;
+        background-color: #ffffff;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #eee;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        min-height: 300px;
+    }
+
+    /* 5. 로그인 & 환영 박스 (이미지 정렬 이슈 해결) */
+    .welcome-box {
+        flex: 1;
+        min-width: 320px;       /* 🚀 박스 찌그러짐 방지 */
+        background-color: #ffffff;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(243, 156, 18, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;    /* 🚀 내부 요소 가로 중앙 정렬 */
+        justify-content: center; /* 🚀 내부 요소 세로 중앙 정렬 */
+        text-align: center;
+        border-top: 5px solid var(--point-orange);
+        box-sizing: border-box;
+    }
+
+    .welcome-text {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--deep-space);
+        margin-bottom: 15px;
+    }
+
+    /* 🚀 추가: 도장 카운트 스타일 */
+    .stamp-status {
+        display: inline-block;
+        margin: 15px auto;
+        padding: 8px 20px;
+        background-color: var(--light-orange);
+        border: 1px dashed var(--point-orange);
+        border-radius: 30px;
+        color: var(--point-orange);
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    /* 🚀 추가: 로그아웃 버튼 스타일 */
+    .logout-btn {
+        margin-top: 15px;
+        color: #999;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .logout-btn:hover { color: var(--point-orange); text-decoration: underline; }
+
+    /* 6. 로그인 폼 및 입력창 (수정 및 추가) */
+.welcome-box form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* 🚀 입력창 사이 간격을 살짝 좁혀서 더 촘촘하게 */
+}
+
+.login-input-group label {
+    display: block;
+    font-size: 13px; /* 🚀 라벨 크기를 살짝 줄여서 세련되게 */
+    font-weight: 700;
+    color: #666;    /* 🚀 너무 검은색보다 짙은 회색이 더 부드러워요 */
+    margin-bottom: 5px;
+}
+
+.login-input-group input {
+    width: 100%;
+    height: 48px;   /* 🚀 높이를 살짝 키워 터치/클릭하기 편하게 */
+    padding: 0 15px;
+    border: 1px solid #e0e0e0; /* 🚀 테두리 색을 더 연하게 */
+    border-radius: 12px;       /* 🚀 굴곡을 더 주어 둥글둥글하게 */
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #fcfcfc; /* 🚀 미세한 배경색으로 입력창 강조 */
+}
+
+.main-login-btn {
+    width: 100%;
+    height: 52px;
+    background-color: var(--point-orange);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px; /* 🚀 버튼 위에 여유 공간 추가 */
+    box-shadow: 0 4px 10px rgba(243, 156, 18, 0.2); /* 🚀 버튼에 입체감 추가 */
+    transition: background 0.3s;
+}
+
+.main-login-btn:hover {
+    background-color: var(--dark-orange);
+}
+
+/* ⭐ 추가: ID찾기 / 회원가입 링크 디자인 */
+.login-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.login-footer a {
+    color: #999;             /* 🚀 촌스러운 파란색 제거 */
+    text-decoration: none;   /* 🚀 밑줄 제거 */
+    font-size: 13px;
+    position: relative;
+    transition: color 0.2s;
+}
+
+/* 링크 사이 구분선 (|) */
+.login-footer a:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -11px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 10px;
+    background-color: #eee;
+}
+
+.login-footer a:hover {
+    color: var(--point-orange); /* 🚀 마우스 올리면 주황색으로 */
+}
+    /* 7. 검색창 (이미지 겹침 현상 완벽 해결) */
+    .search-container {
+    display: flex;
+    justify-content: center;
+    /* 상단(영상/로그인)과의 간격은 60px, 하단(동그라미 버튼)과의 간격은 100px로 조절 */
+    margin: 60px 0 100px 0;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 800px; /* 검색창 너비를 살짝 키워 비율을 맞춤 */
+    height: 65px;     /* 높이를 살짝 키워 시원하게 변경 */
+    background-color: white;
+    border: 2px solid var(--point-orange);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(243, 156, 18, 0.12);
+}
+
+    .search-input {
+        flex: 1;              /* 🚀 남은 공간 모두 차지 */
+        border: none;
+        padding: 0 30px;
+        font-size: 17px;
+        outline: none;
+        min-width: 0;         /* 🚀 겹침 방지 필수 설정 */
+    }
+
+    .search-btn {
+        width: 120px;
+        background-color: var(--point-orange);
+        color: #ffffff;
+        border: none;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        flex-shrink: 0;       /* 🚀 버튼 크기 고정 (이미지 겹침 해결 핵심) */
+    }
+
+    .search-btn:hover { background-color: var(--dark-orange); }
+
+    /* 8. 하단 원형 버튼 행 */
+  .button-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;        /* 버튼 사이 간격을 25->30으로 살짝 넓힘 */
+    margin-top: 0;    /* search-container의 margin-bottom에서 간격을 조절하므로 0으로 설정 */
+    margin-bottom: 60px; /* 푸터와의 간격 확보 */
+}
+
+    .circle-btn {
+        width: 145px;
+        height: 145px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--deep-space);
+        font-weight: 700;
+        font-size: 19px;
+        text-decoration: none;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+        transition: all 0.3s ease;
+    }
+
+    .circle-btn:hover {
+        transform: translateY(-10px);
+        background-color: var(--point-orange);
+        color: #ffffff;
+        box-shadow: 0 10px 25px rgba(243, 156, 18, 0.25);
+    }
+

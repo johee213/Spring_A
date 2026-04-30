@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="navbarStyles">
+        <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    </th:block>
+
+</head>
+<body>
+<nav class="top-nav" th:fragment="navbarFragment">
+    <div class="logo-area">
+        <a th:href="@{/}">
+            <img th:src="@{/img/logo.png}" alt="마실 로고">
+        </a>
+    </div>
+
+    <div class="pill-nav">
+        <a th:href="@{/learning}" class="nav-item">학습센터</a>
+        <a th:href="@{/support}" class="nav-item">도움센터</a>
+        <a th:href="@{/news}" class="nav-item">소식통</a>
+        <a th:href="@{/mypage}" class="nav-item">내 정보</a>
+    </div>
+
+    <script>
+        (function() {
+            const currentPath = window.location.pathname;
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                const itemPath = item.getAttribute('href');
+                if (currentPath === itemPath || (currentPath === '/' && itemPath === '/index')) {
+                    item.classList.add('active');
+                }
+            });
+        })();
+    </script>
+</nav>
+</body>
+
+</html>

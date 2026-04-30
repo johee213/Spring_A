@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block layout:fragment="css"></th:block>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마실 학습터 - 나의 공부방</title>
+<!--    <style>-->
+<!--        :root {-->
+<!--            &#45;&#45;point-orange: #F39C12;-->
+<!--            &#45;&#45;dark-orange: #E67E22;-->
+<!--            &#45;&#45;bg-gray: #f8f9fa;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            background-color: var(&#45;&#45;bg-gray);-->
+<!--            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 50px 20px;-->
+<!--        }-->
+
+<!--        .main-wrapper {-->
+<!--            max-width: 1200px;-->
+<!--            margin: 0 auto;-->
+<!--        }-->
+
+<!--        /* 상단 타이틀 영역 */-->
+<!--        .top-header {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            margin-bottom: 30px;-->
+<!--        }-->
+
+<!--        .room-title {-->
+<!--            font-size: 28px;-->
+<!--            font-weight: 900;-->
+<!--            margin: 0;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .pill-btn {-->
+<!--            background-color: var(&#45;&#45;point-orange);-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            padding: 12px 25px;-->
+<!--            border-radius: 50px;-->
+<!--            font-weight: 700;-->
+<!--            font-size: 14px;-->
+<!--            cursor: pointer;-->
+<!--            text-decoration: none;-->
+<!--            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.2);-->
+<!--            transition: 0.3s;-->
+<!--            display: inline-block;-->
+<!--        }-->
+
+<!--        .pill-btn:hover {-->
+<!--            background-color: var(&#45;&#45;dark-orange);-->
+<!--            transform: translateY(-2px);-->
+<!--        }-->
+
+<!--        /* 3단 대시보드 컨테이너 */-->
+<!--        .dashboard-container {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: 280px 1fr 280px;-->
+<!--            gap: 25px;-->
+<!--        }-->
+
+<!--        .card {-->
+<!--            background: white;-->
+<!--            border-radius: 35px;-->
+<!--            padding: 30px;-->
+<!--            box-shadow: 0 10px 30px rgba(0,0,0,0.05);-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        .card-title-area {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 8px;-->
+<!--            margin-bottom: 25px;-->
+<!--            color: #333;-->
+<!--            font-size: 17px;-->
+<!--            font-weight: 800;-->
+<!--        }-->
+
+<!--        /* 1. 왼쪽: 결제 내역 */-->
+<!--        .payment-list {-->
+<!--            list-style: none;-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .payment-item {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            padding: 18px 10px;-->
+<!--            border-bottom: 1px solid #f8f9fa;-->
+<!--            font-size: 15px;-->
+<!--            cursor: pointer;-->
+<!--            border-radius: 15px;-->
+<!--            transition: 0.2s;-->
+<!--        }-->
+
+<!--        .payment-item:hover {-->
+<!--            background-color: #fff9f0;-->
+<!--            padding-left: 15px;-->
+<!--        }-->
+
+<!--        .item-name { font-weight: 600; color: #444; }-->
+<!--        .item-price { font-weight: 800; color: #333; }-->
+
+<!--        /* 2. 중앙: 다중 선 그래프 */-->
+<!--        .graph-wrapper {-->
+<!--            width: 100%;-->
+<!--            height: 250px;-->
+<!--            margin: 20px 0;-->
+<!--        }-->
+
+<!--        .chart-path { stroke-width: 4; stroke-linecap: round; fill: none; }-->
+<!--        .path-kiosk { stroke: #3498DB; }-->
+<!--        .path-phone { stroke: #E74C3C; }-->
+<!--        .path-pc { stroke: #2ECC71; }-->
+
+<!--        .chart-legend {-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            gap: 20px;-->
+<!--            font-size: 13px;-->
+<!--            font-weight: 600;-->
+<!--            color: #777;-->
+<!--            margin-top: 15px;-->
+<!--        }-->
+
+<!--        /* 3. 오른쪽: 출석부 */-->
+<!--        .attendance-grid {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(7, 1fr);-->
+<!--            gap: 8px;-->
+<!--        }-->
+
+<!--        .day {-->
+<!--            aspect-ratio: 1;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-size: 12px;-->
+<!--            font-weight: 800;-->
+<!--            border-radius: 50%;-->
+<!--            background: #f1f1f1;-->
+<!--            color: #aaa;-->
+<!--        }-->
+
+<!--        .day.checked {-->
+<!--            background-color: var(&#45;&#45;point-orange);-->
+<!--            color: white;-->
+<!--            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);-->
+<!--        }-->
+
+<!--        /* 상세 정보 모달 */-->
+<!--        .modal {-->
+<!--            display: none;-->
+<!--            position: fixed;-->
+<!--            top: 0; left: 0; width: 100%; height: 100%;-->
+<!--            background: rgba(0,0,0,0.6);-->
+<!--            align-items: center; justify-content: center;-->
+<!--            z-index: 1000;-->
+<!--            backdrop-filter: blur(8px);-->
+<!--        }-->
+
+<!--        .modal-content {-->
+<!--            background: white;-->
+<!--            border-radius: 40px;-->
+<!--            width: 400px;-->
+<!--            overflow: hidden;-->
+<!--            box-shadow: 0 25px 60px rgba(0,0,0,0.2);-->
+<!--            animation: modalFadeIn 0.3s ease;-->
+<!--        }-->
+
+<!--        @keyframes modalFadeIn {-->
+<!--            from { opacity: 0; transform: scale(0.95); }-->
+<!--            to { opacity: 1; transform: scale(1); }-->
+<!--        }-->
+
+<!--        .modal-header {-->
+<!--            background-color: var(&#45;&#45;point-orange);-->
+<!--            padding: 30px 20px;-->
+<!--            color: white;-->
+<!--            text-align: center;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .close-modal {-->
+<!--            position: absolute;-->
+<!--            top: 15px; right: 20px;-->
+<!--            font-size: 24px; cursor: pointer; color: rgba(255,255,255,0.8);-->
+<!--        }-->
+
+<!--        .modal-body { padding: 30px; }-->
+
+<!--        .info-row {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            margin-bottom: 20px;-->
+<!--            font-size: 15px;-->
+<!--            border-bottom: 1px dashed #eee;-->
+<!--            padding-bottom: 12px;-->
+<!--        }-->
+
+<!--        .info-label { color: #999; font-weight: 500; }-->
+<!--        .info-value { color: #333; font-weight: 700; }-->
+
+<!--        .modal-footer { padding: 0 30px 30px; }-->
+<!--        -->
+<!--        .btn-full {-->
+<!--            width: 100%;-->
+<!--            background: var(&#45;&#45;point-orange);-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            padding: 16px;-->
+<!--            border-radius: 50px;-->
+<!--            font-weight: 700;-->
+<!--            cursor: pointer;-->
+<!--            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);-->
+<!--            transition: 0.2s;-->
+<!--        }-->
+
+<!--        .btn-full:hover { background-color: var(&#45;&#45;dark-orange); }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="main-wrapper">-->
+<!--    <div class="top-header">-->
+<!--        <h1 class="room-title">나의 공부방</h1>-->
+<!--        <a href="#" class="pill-btn">개인 정보 수정</a>-->
+<!--    </div>-->
+
+<!--    <div class="dashboard-container">-->
+<!--        <div class="card">-->
+<!--            <div class="card-title-area">-->
+<!--                <span>💳</span> <span>카테고리 내역 / 결제</span>-->
+<!--            </div>-->
+<!--            <ul class="payment-list">-->
+<!--&lt;!&ndash;                ********타임리프추가*********               &ndash;&gt;-->
+
+<!--                <li class="payment-item" th:each="order : ${list}"-->
+<!--                    th:onclick="openModal([[${order.category}]], [[${order.price}]], [[${#temporals.format(order.payday, 'yyyy. MM. dd')}]])">-->
+<!--                    <span class="item-name" th:text="${order.category}">상품명(DB값으로 대체됨)</span>-->
+<!--                    <span class="item-price" th:text="'₩' + ${#numbers.formatInteger(order.price, 3, 'COMMA')}">가격(DB값으로 대체됨)</span>-->
+<!--                </li>-->
+
+<!--                <li class="payment-item" th:if="${#lists.isEmpty(list)}" style="justify-content: center; color: #999;">-->
+<!--                    결제 내역이 없a습니다.-->
+<!--                </li>-->
+<!--&lt;!&ndash;                <li class="payment-item" th:each="order : ${list}"&ndash;&gt;-->
+<!--&lt;!&ndash;                    th:onclick="openModal([[${order.category}]], [[${order.price}]], [[${#temporals.format(order.payday, 'yyyy. MM. dd')}]])">&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="payment-item" onclick="openModal('자바 마스터', '₩55,000', '2026. 04. 25')">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="item-name">자바 마스터</span><span class="item-price">₩55,000</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="payment-item" onclick="openModal('스프링 부트', '₩88,000', '2026. 04. 15')">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="item-name">스프링 부트</span><span class="item-price">₩88,000</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="payment-item" onclick="openModal('DB 기초', '₩33,000', '2026. 04. 10')">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="item-name">DB 기초</span><span class="item-price">₩33,000</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="payment-item" onclick="openModal('알고리즘', '₩44,000', '2026. 03. 28')">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="item-name">알고리즘</span><span class="item-price">₩44,000</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
+<!--        </div>-->
+
+<!--        <div class="card" style="align-items: center;">-->
+<!--            <div class="card-title-area">-->
+<!--                <span>📈</span> <span>수업 진도율</span>-->
+<!--            </div>-->
+<!--            <div class="graph-wrapper">-->
+<!--                <svg viewBox="0 0 500 200" width="100%" height="100%">-->
+<!--                    <line x1="0" y1="50" x2="500" y2="50" stroke="#f5f5f5" stroke-width="1" />-->
+<!--                    <line x1="0" y1="100" x2="500" y2="100" stroke="#f5f5f5" stroke-width="1" />-->
+<!--                    <line x1="0" y1="150" x2="500" y2="150" stroke="#f5f5f5" stroke-width="1" />-->
+<!--                    <path class="chart-path path-kiosk" d="M0,180 L100,120 L200,150 L300,50 L400,80 L500,30" />-->
+<!--                    <path class="chart-path path-phone" d="M0,150 L100,160 L200,110 L300,140 L400,90 L500,110" />-->
+<!--                    <path class="chart-path path-pc" d="M0,160 L100,130 L200,160 L300,120 L400,150 L500,80" />-->
+<!--                </svg>-->
+<!--            </div>-->
+<!--            <div class="chart-legend">-->
+<!--                <span><span style="color:#3498DB;">●</span> 키오스크</span>-->
+<!--                <span><span style="color:#E74C3C;">●</span> 핸드폰</span>-->
+<!--                <span><span style="color:#2ECC71;">●</span> 컴퓨터</span>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="card">-->
+<!--            <div class="card-title-area">-->
+<!--                <span>📅</span> <span>출석부</span>-->
+<!--            </div>-->
+<!--            <div class="attendance-grid">-->
+<!--                <div class="day checked">1</div><div class="day checked">2</div><div class="day">3</div><div class="day checked">4</div>-->
+<!--                <div class="day">5</div><div class="day">6</div><div class="day checked">7</div><div class="day checked">8</div>-->
+<!--                <div class="day checked">9</div><div class="day">10</div><div class="day checked">11</div><div class="day">12</div>-->
+<!--                <div class="day">13</div><div class="day checked">14</div><div class="day">15</div><div class="day">16</div>-->
+<!--                <div class="day checked">17</div><div class="day">18</div><div class="day">19</div><div class="day checked">20</div>-->
+<!--                <div class="day checked">21</div><div class="day checked">22</div><div class="day">23</div><div class="day">24</div>-->
+<!--                <div class="day checked">25</div><div class="day">26</div><div class="day">27</div><div class="day checked">28</div>-->
+<!--            </div>-->
+<!--            <p style="text-align: center; font-size: 14px; margin-top: 25px; color: var(&#45;&#45;point-orange); font-weight: 800;">이번 달 수강률: 85% 🍊</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div id="paymentModal" class="modal">-->
+<!--    <div class="modal-content">-->
+<!--        <div class="modal-header">-->
+<!--            <span class="close-modal" onclick="closeModal()">&times;</span>-->
+<!--            <h2>결제 내역 상세보기</h2>-->
+<!--        </div>-->
+<!--        <div class="modal-body">-->
+<!--            <div class="info-row"><span class="info-label">상품명</span><span id="modalName" class="info-value">-</span></div>-->
+<!--            <div class="info-row"><span class="info-label">결제 일자</span><span id="modalDate" class="info-value">-</span></div>-->
+<!--            <div class="info-row"><span class="info-label">결제 수단</span><span class="info-value">마실 페이</span></div>-->
+<!--            <div class="info-row"><span class="info-label">결제 금액</span><span id="modalPrice" class="info-value" style="color: var(&#45;&#45;dark-orange); font-size: 18px;">-</span></div>-->
+<!--            <div class="info-row" style="border: none;"><span class="info-label">상태</span><span class="info-value" style="color: #2ECC71;">결제 완료</span></div>-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--            <button class="btn-full" onclick="closeModal()">확인</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function openModal(name, price, date) {-->
+<!--        document.getElementById('modalName').innerText = name;-->
+<!--        document.getElementById('modalPrice').innerText = price;-->
+<!--        document.getElementById('modalDate').innerText = date;-->
+<!--        document.getElementById('paymentModal').style.display = 'flex';-->
+<!--    }-->
+
+<!--    function closeModal() {-->
+<!--        document.getElementById('paymentModal').style.display = 'none';-->
+<!--    }-->
+
+<!--    window.onclick = function(event) {-->
+<!--        if (event.target == document.getElementById('paymentModal')) closeModal();-->
+<!--    }-->
+</script>
+
+</body>
+</html>

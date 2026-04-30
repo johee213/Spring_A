@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:fragment="footerStyles">
+        <link rel="stylesheet" th:href="@{/css/footer.css}">
+    </th:block>
+</head>
+<body>
+
+<footer th:fragment="footerFragment">
+    <div class="footer-container">
+        <div class="footer-section">
+            <span class="footer-logo">마실 학습터</span>
+            <p>언제 어디서나 즐겁게 배우는<br>우리들의 디지털 배움터입니다.</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>바로가기</h4>
+            <ul class="footer-links">
+                <li><a th:href="@{/learning}">강의 목록</a></li>
+                <li><a th:href="@{/news}">공지사항</a></li>
+                <li><a th:href="@{/support}">자주 묻는 질문</a></li>
+                <li><a th:href="@{/mypage}">마이페이지</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>이메일: contact@masil.com</p>
+            <p>대표번호: 010-1234-5678</p>
+            <p>운영시간: 평일 09:00 - 18:00</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Policy</h4>
+            <ul class="footer-links">
+                <li><a href="#" style="font-weight: bold; color: #fff;">개인정보처리방침</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">저작권 안내</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Masil Study Project Team. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
