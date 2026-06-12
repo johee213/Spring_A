@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <title>문의 게시판</title>
+</head>
+<body>
+<header>
+  <h1><a th:href="@{/siteUser/list}" style="color: #64ffda;">노을</a></h1>
+  <div style="display: flex; align-items: center; gap: 15px;">
+    <span sec:authorize="isAuthenticated()" style="color: #64ffda;" th:text="'안녕하세요, ' + ${#authentication.name} + '님'"></span>
+    <a href="/posting/chuga" class="btn-mint">글쓰기</a>
+  </div>
+</header>
+
+<main class="container-wide">
+  <h2>문의 내역</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p, loop : ${posting}">
+      <td th:text="${loop.count}"></td>
+      <td><a th:href="@{/posting/view/{id}(id=${p.id})}" th:text="${p.subject}" style="color: #64ffda;"></a></td>
+      <td th:text="${p.siteUser != null ? p.siteUser.name : '알수없음'}"></td>
+      <td th:text="${p.createdDate}"></td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+</body>
+</html>

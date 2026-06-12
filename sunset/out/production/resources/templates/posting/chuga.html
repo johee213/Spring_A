@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <title>글쓰기</title>
+</head>
+<body>
+<main class="container">
+  <h2>문의하기</h2>
+  <form th:action="@{/posting/chugaProc}" method="POST">
+    <div>
+      <label>제목</label>
+      <input type="text" name="subject" required>
+    </div>
+    <div>
+      <label>내용</label>
+      <textarea name="content" rows="10" required></textarea>
+    </div>
+    <button type="submit">등록</button>
+  </form>
+</main>
+</body>
+</html>

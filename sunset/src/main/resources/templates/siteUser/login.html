@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>로그인 - 노을</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+
+<div class="login-box" style="width: 350px;">
+    <h3>로그인</h3>
+    <form th:action="@{/login}" method="POST">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+        <input type="text" name="username" placeholder="아이디">
+        <input type="password" name="password" placeholder="비밀번호">
+        <button type="submit">로그인</button>
+    </form>
+    <p>계정이 없으신가요? <a href="/siteUser/chuga" style="color: #64ffda;">회원가입</a></p>
+</div>
+
+</body>
+</html>

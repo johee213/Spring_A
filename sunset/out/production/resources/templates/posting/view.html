@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>문의 상세</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<main class="container">
+    <h2 th:text="${posting.subject}">제목</h2>
+    <div style="border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 10px;">
+        <span>작성자: <span th:text="${posting.siteUser != null ? posting.siteUser.name : '알수없음'}">이름</span></span>
+        <span> | 작성일: <span th:text="${posting.createdDate}">날짜</span></span>
+    </div>
+
+    <div style="white-space: pre-wrap; min-height: 200px;" th:text="${posting.content}">
+        내용이 들어갈 자리입니다.
+    </div>
+
+    <!-- 답변 목록 -->
+    <div th:if="${posting.commentList != null and !posting.commentList.isEmpty()}">
+        <h3 style="color: #64ffda;">답변</h3>
+        <div th:each="comment : ${posting.commentList}" style="border: 1px solid #64ffda; padding: 10px; margin-bottom: 10px;">
+            <p th:text="${comment.content}"></p>
+            <small th:text="${comment.createdDate}"></small>
+        </div>
+    </div>
+
+    <!-- 관리자만 답변 폼 보임 -->
+    <div sec:authorize="hasRole('ADMIN')" style="margin-top: 30px;">
+        <h3 style="color: #64ffda;">답변 작성</h3>
+        <form th:action="@{/comment/chugaProc}" method="POST">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <input type="hidden" name="postingId" th:value="${posting.id}">
+            <textarea name="content" rows="5" style="width: 100%; padding: 10px;" required></textarea>
+            <button type="submit" class="btn-mint" style="margin-top: 10px;">답변 완료</button>
+        </form>
+    </div>
+
+    <a href="/posting/list" style="color: #64ffda;">목록으로</a>
+</main>
+</body>
+</html>
